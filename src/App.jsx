@@ -1,27 +1,19 @@
 
 
-import { useEffect } from "react"
-import { RoutesMain } from "./routes/RoutesMain.index"
-import { api } from "./services/api"
+import { useState } from "react";
+import { RoutesMain } from "./routes/RoutesMain.index";
+
 
 
 export const App = () => {
 
-
-
-  useEffect(() =>{
-    async function loadData(){
-      const response = await api.get("/")
-      console.log(response);
-    }
-    loadData();
-  }, [])
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <div className="App">
-      <RoutesMain />
+      <RoutesMain setIsLogin={setIsLogin } />
     </div>
-  )
+  );
 }
 
 

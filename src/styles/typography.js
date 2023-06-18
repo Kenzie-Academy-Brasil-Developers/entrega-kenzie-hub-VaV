@@ -116,7 +116,6 @@ export const ButtonLogin = styled.p`
   ${ButtonLogins};
 `;
 
-
 export const Headlines1remInput = css`
   font-size: 1rem;
   font-family: 'Inter';

@@ -1,11 +1,20 @@
 
-import { Link } from "react-router-dom"
-import Logo from "../../assets/Logo.png"
+import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo.png";
+import { useNavigate } from "react-router-dom";
 
-import { ButtonLogin, Headline, Headline1, Headline1rem } from "../../styles/typography"
+import { ButtonLogin, Headline, Headline1, Headline1rem } from "../../styles/typography";
 
 
-export const LoginPage = () => {
+export const LoginPage = ({ setIsLogin }) => {
+
+    const navigate = useNavigate();
+
+    const userLogin = () => {
+        setIsLogin(true);
+        localStorage.setItem("@LOGIN", "true");
+        navigate("/HomePage");
+    };
 
     return (
         <>
@@ -22,28 +31,16 @@ export const LoginPage = () => {
                     <Headline>Password</Headline>
                     <input type="password" placeholder="Password" className={Headline} />
                 </div>
-                <ButtonLogin> Enter </ButtonLogin>
+                <ButtonLogin onClick={userLogin}> Enter </ButtonLogin>
 
                 <div>
                     <Headline1rem> Still don't have an account? </Headline1rem>
-                    
-                    <Link to="/users">
-                    <button className={ButtonLogin}> Sign-in </button>
+
+                    <Link to="/Register">
+                        <button className={ButtonLogin}> Sign-in </button>
                     </Link>
                 </div>
             </div>
         </>
-    )
-}
-
-/*  Kenzie Hub IMAGE
-    Login h1 --> Headline1
-    E-mail written <p> --> Headline
-    input E-mail <p> --> Headline
-    Input Password <p> --> Headline
-    Login button --> Text: Entrar -->
-
-    Sign-in-Button --> text above: still don't have an account? --> Headline1rem
-
-    button text: Sign-in --> ButtonLogin
-*/
+    );
+};
