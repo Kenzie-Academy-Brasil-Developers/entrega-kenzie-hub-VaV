@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 
 import Logo from "../../assets/Logo.png";
-import { Headline, Headline1, HeadlineBold } from "../../styles/typography";
+import { Headline, Headline1} from "../../styles/typography";
+
+import { RegisterList } from "../RegisterPage/RegisterList/RegisterList index";
 
 
-export const HomePage = () => {
+export const HomePage = ({registerList, setRegisterList}) => {
 
     return (
         <>
@@ -14,8 +16,7 @@ export const HomePage = () => {
                     <Link to="/"> Loggout </Link>
                 </header>
                 <div>
-                    <Headline1>Hello Samuel Lion</Headline1>
-                    <HeadlineBold> First Module, Introduction to Frontend </HeadlineBold>
+                    <RegisterList registerList={registerList} setRegisterList={setRegisterList} />
                 </div>
                 <div>
                     <Headline1>  What a shame, we are still in development D:</Headline1>

@@ -11,7 +11,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <RoutesMain setIsLogin={setIsLogin } />
+      <RoutesMain isLogin={isLogin} setIsLogin={setIsLogin } />
     </div>
   );
 }

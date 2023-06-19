@@ -8,7 +8,7 @@ import { RegisterList } from "./RegisterList/RegisterList index";
 
 
 
-export const RegisterPage = ({ registerList }) => {
+export const RegisterPage = ({ registerList, setRegisterList }) => {
 
     return (
         <>
@@ -25,8 +25,7 @@ export const RegisterPage = ({ registerList }) => {
                     Fast and free, here we go!
                 </Headline>
                 <div>
-                    <AddRegisterForm />
-                    <RegisterList registerList={registerList} />
+                    <AddRegisterForm setRegisterList={setRegisterList} />
                 </div>
             </div>
         </>

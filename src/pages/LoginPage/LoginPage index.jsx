@@ -12,8 +12,25 @@ export const LoginPage = ({ setIsLogin }) => {
 
     const userLogin = () => {
         setIsLogin(true);
-        localStorage.setItem("@LOGIN", "true");
+        localStorage.setItem("@USERID", "true");
+        localStorage.setItem("TOKEN", "True");
         navigate("/HomePage");
+    };
+
+
+
+    const userLoggedin = async (formData) => {
+        try {
+            const { data } = await api.post("/sessions", formData);
+            localStorage.setItem("token", data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const submit = (formData) => {
+        userLoggedin(formData);
+        reset();
     };
 
     return (
