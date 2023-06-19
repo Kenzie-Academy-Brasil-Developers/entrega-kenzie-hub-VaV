@@ -5,8 +5,8 @@ import { Input } from "../Inputs/input index";
 import { formBlueprint } from "./FormBlueprint";
 import { api } from "../../services/api";
 
-import { ButtonLogin, HeadlineItalic } from "../../styles/typography";
-import { LoginContainer } from "./styles";
+import { ButtonLogin} from "../../styles/typography";
+import { LoginContainer, Select} from "./styles";
 import { useNavigate } from "react-router-dom";
 
 
@@ -39,6 +39,7 @@ export const AddRegisterForm = ({ setRegisterList }) => {
 
         <LoginContainer onSubmit={handleSubmit(submit)} noValidate>
             <Input required label="name:" type="text" {...register("name")} />
+            
 
             <Input required label="email:" type="text" {...register("email")} />
             
@@ -54,13 +55,13 @@ export const AddRegisterForm = ({ setRegisterList }) => {
 
             <Input required label="contact:" type="text" {...register("contact")} />
            
-            <select name="Module" id="Course-Module" label="course_module:" {...register("course_module")}>
+            <Select name="Module" id="Course-Module" label="course_module:" {...register("course_module")}>
                 <option value=""> Please choose an option</option>
                 <option value="M1">Primeiro módulo (Introdução ao Frontend)</option>
                 <option value="M2">Segundo módulo (Frontend Avançado)</option>
                 <option value="M3">Terceiro módulo (Introdução ao Backend)</option>
                 <option value="M4">Quarto módulo (Backend Avançado)</option>
-            </select>
+            </Select>
             <button type="submit" className={ButtonLogin}> Sign-in</button>
         </LoginContainer >
 

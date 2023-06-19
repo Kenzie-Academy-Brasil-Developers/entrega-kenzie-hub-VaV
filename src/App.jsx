@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { RoutesMain } from "./routes/RoutesMain.index";
+import GlobalStyles from "./styles/globalstyles";
 
 
 
@@ -11,7 +12,8 @@ export const App = () => {
 
   return (
     <div className="App">
-      <RoutesMain isLogin={isLogin} setIsLogin={setIsLogin } />
+      <GlobalStyles/>
+      <RoutesMain isLogin={isLogin} setIsLogin={setIsLogin} />
     </div>
   );
 }

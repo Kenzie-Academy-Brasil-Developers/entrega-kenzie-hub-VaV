@@ -4,6 +4,7 @@ import Logo from "../../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 
 import { ButtonLogin, Headline, Headline1, Headline1rem } from "../../styles/typography";
+import { LoginPageDiv, LoginContainer, ImageContainer, InfoLogin, EmailInput, PasswordInput, Phrase, SigninButton } from "./styles";
 
 
 export const LoginPage = ({ setIsLogin }) => {
@@ -34,30 +35,33 @@ export const LoginPage = ({ setIsLogin }) => {
     };
 
     return (
-        <>
-            <img src={Logo} alt="" />
-            <div>
-                <Headline1>
-                    Login
-                </Headline1>
-                <div>
-                    <Headline>E-mail</Headline>
-                    <input type="text" placeholder="E-mail" className={Headline} />
-                </div>
-                <div>
-                    <Headline>Password</Headline>
-                    <input type="password" placeholder="Password" className={Headline} />
-                </div>
-                <ButtonLogin onClick={userLogin}> Enter </ButtonLogin>
+        <LoginPageDiv>
+            <ImageContainer>
+                <img src={Logo} alt="" />
+            </ImageContainer>
+            <LoginContainer>
+                <InfoLogin>
+                    <Headline1>
+                        Login
+                    </Headline1>
+                    <div>
+                        <Headline>E-mail</Headline>
+                        <EmailInput type="text" placeholder="E-mail" />
+                    </div>
+                    <div>
+                        <Headline>Password</Headline>
+                        <PasswordInput type="password" placeholder="Password" />
+                    </div>
+                    <button onClick={userLogin}> Enter </button>
+                    <Phrase> Still don't have an account? </Phrase>
 
-                <div>
-                    <Headline1rem> Still don't have an account? </Headline1rem>
-
+                    
                     <Link to="/Register">
-                        <button className={ButtonLogin}> Sign-in </button>
+                        <SigninButton className={ButtonLogin}> Sign-in </SigninButton>
                     </Link>
-                </div>
-            </div>
-        </>
+                </InfoLogin>
+            </LoginContainer>
+        </LoginPageDiv>
+
     );
 };

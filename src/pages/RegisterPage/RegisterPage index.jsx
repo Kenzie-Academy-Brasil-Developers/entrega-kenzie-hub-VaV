@@ -4,7 +4,9 @@ import Logo from "../../assets/Logo.png";
 
 import { Headline, Headline1 } from "../../styles/typography";
 import { AddRegisterForm } from "../../components/AddRegisterForm/RegisterForm index";
-import { RegisterList } from "./RegisterList/RegisterList index";
+import { NavbarRegister, NavButtonRegister, TextContainer } from "./styles";
+import { NavLink } from "react-router-dom";
+import { Phrase } from "../LoginPage/styles";
 
 
 
@@ -12,22 +14,23 @@ export const RegisterPage = ({ registerList, setRegisterList }) => {
 
     return (
         <>
-            <div>
-                <img src={Logo} alt="lOGO KENZIE" />
-
-                <Link to="/"> Back to Home</Link>
-            </div>
-            <div>
+            <NavbarRegister>
+                <img src={Logo} alt="" />
+                <NavButtonRegister>
+                    <NavLink to="/"> <li>Loggout</li> </NavLink>
+                </NavButtonRegister>
+            </NavbarRegister>
+            <TextContainer>
                 <Headline1>
                     RegisterPage
                 </Headline1>
-                <Headline>
+                <Phrase>
                     Fast and free, here we go!
-                </Headline>
+                </Phrase>
                 <div>
                     <AddRegisterForm setRegisterList={setRegisterList} />
                 </div>
-            </div>
+            </TextContainer>
         </>
     );
 };

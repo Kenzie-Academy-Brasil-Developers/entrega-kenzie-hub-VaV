@@ -8,6 +8,7 @@ export const Headlines1 = css`
   line-height: 1.75rem;
   text-decoration: none;
   text-transform: none;
+  padding-bottom: 1rem;
 `;
 export const Headline1 = styled.h1`
   ${Headlines1};

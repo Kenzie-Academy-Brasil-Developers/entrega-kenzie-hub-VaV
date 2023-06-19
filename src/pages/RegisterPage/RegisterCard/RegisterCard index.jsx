@@ -3,11 +3,11 @@ export const RegisterCard = ({ register }) => {
 
 
     return (
-        <li>
+        <div>
             <h3>
                 Hello, {register.name}
             </h3>
-            <span>{register.course_module}</span>
-        </li>
+            <p>{register.course_module}</p>
+        </div>
     );
 };

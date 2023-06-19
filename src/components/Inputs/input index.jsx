@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { FieldSet } from "./styles";
+import { FieldSet,} from "./styles";
 
 
-export const Input = forwardRef(({ label, type, id, error, ...rest}, ref) => {
+export const Input = forwardRef(({ label, type, id, error, ...rest }, ref) => {
     return (
 
         <FieldSet>
@@ -13,18 +13,4 @@ export const Input = forwardRef(({ label, type, id, error, ...rest}, ref) => {
 
     );
 });
-
-
-
-/* const InputTwo = ({ label, type, register, error }) => {
-
-    return (
-        <div>
-            <Input required label="name:" type="text" {...register("name")} />
-            {errors.name ? <HeadlineItalic>{errors.name.message}</HeadlineItalic> : null}
-        </div>
-
-    );
-}
- */
 

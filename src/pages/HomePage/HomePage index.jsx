@@ -1,28 +1,33 @@
-import { Link } from "react-router-dom";
-
 import Logo from "../../assets/Logo.png";
-import { Headline, Headline1} from "../../styles/typography";
-
+import { Headline, Headline1 } from "../../styles/typography";
 import { RegisterList } from "../RegisterPage/RegisterList/RegisterList index";
+import { Header, HomePageContainer, Main, Navbar, NavButton } from "./styles";
+import { NavLink } from "react-router-dom";
 
 
-export const HomePage = ({registerList, setRegisterList}) => {
+
+
+export const HomePage = ({ registerList, setRegisterList }) => {
 
     return (
         <>
-            <div>
-                <header>
+            <HomePageContainer>
+                <Navbar>
                     <img src={Logo} alt="" />
-                    <Link to="/"> Loggout </Link>
-                </header>
+                    <NavButton>
+                        <NavLink to="/"> <li>Loggout</li> </NavLink>
+                    </NavButton>
+                </Navbar>
                 <div>
-                    <RegisterList registerList={registerList} setRegisterList={setRegisterList} />
+                    <Header>
+                        <RegisterList registerList={registerList} setRegisterList={setRegisterList}/>
+                    </Header>
                 </div>
-                <div>
-                    <Headline1>  What a shame, we are still in development D:</Headline1>
+                <Main>
+                    <Headline1>  What a shame, we are still under development D:</Headline1>
                     <Headline> our application is under developemnt, but soon we'll have some news :3</Headline>
-                </div>
-            </div>
+                </Main>
+            </HomePageContainer>
         </>
     );
 };
