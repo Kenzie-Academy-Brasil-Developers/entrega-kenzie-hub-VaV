@@ -1,19 +1,14 @@
 import styled from 'styled-components';
 
-
 export const HomePageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-
-
-`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const Navbar = styled.nav`
-  width: clamp(20rem, 100%, 100rem);
+  width: clamp(20rem, 100%, 180rem);
   height: 7.5rem;
   z-index: 1;
-
- /*  position: fixed; */
 
   padding: 1rem;
   display: flex;
@@ -44,11 +39,12 @@ export const NavButton = styled.ul`
 `;
 
 export const Header = styled.header`
+  width: clamp(20rem, 100%, 180rem);
   height: 7.1875rem;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
 
   border-bottom: 1px solid var(--color-grey-3);
 
@@ -56,9 +52,14 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.main`
-    padding:2.5rem;
+  width: clamp(20rem, 100%, 180rem);
+  padding: 2.5rem;
 
-    gap: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
 
-    color: var(--color-grey-0);
-`
+  color: var(--color-grey-0);
+`;

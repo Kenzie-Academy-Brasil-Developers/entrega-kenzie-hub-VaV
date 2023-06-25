@@ -1,17 +1,21 @@
 
 import { useContext } from "react";
 import { UserContext } from "../../../provider/UserContext";
+import { UserDiv, UserModule, UserName } from "./styles";
 
 
 export const RegisterList = () => {
     const {user} = useContext(UserContext)
   
     return (
-        <div>
+        <UserDiv>
             
-            <h1>
-             {user.name} - {user.course_module}
-            </h1>   
-        </div>
+            <UserName>
+             {user.name}  
+            </UserName>   
+            <UserModule>
+                {user.course_module}
+            </UserModule>
+        </UserDiv>
     );
 };

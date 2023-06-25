@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Headline1 } from '../../../styles/typography';
 
 export const Header = styled.header`
   display: flex;
@@ -9,8 +10,6 @@ export const Navbar = styled.nav`
   width: clamp(20rem, 100%, 100rem);
   height: 7.5rem;
   z-index: 1;
-
- /*  position: fixed; */
 
   padding: 1rem;
   display: flex;
@@ -38,4 +37,40 @@ export const NavButton = styled.ul`
   &:hover {
     background-color: var(--color-grey-2);
   }
+`;
+
+export const UserDiv = styled.div`
+width: clamp(20rem, 100%, 180rem);
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-around;
+padding: 1rem;
+
+@media (min-width: 25.25rem) {
+    gap: 2rem;
+  }
+`
+
+export const UserName = styled.h1`
+  font-size: 1.125rem;
+  font-family: 'Inter';
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.75rem;
+  text-decoration: none;
+  text-transform: none;
+  padding-bottom: 1rem;
+`;
+
+export const UserModule = styled.h3`
+  font-size: 0.75rem;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 22px;
+  text-decoration: none;
+  text-transform: none;
+
+  color: var(--color-grey-1);
 `;
