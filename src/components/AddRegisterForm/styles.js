@@ -18,7 +18,7 @@ export const LoginContainer = styled.form`
     margin-top:1rem;
 
     color: var(--color-grey-0);
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-disable);
     border-radius: 0.25rem;
     border: none;
 

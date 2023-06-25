@@ -5,27 +5,13 @@ import { RegisterPage } from "../pages/RegisterPage/RegisterPage index";
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
 
-export const RoutesMain = ({ isLogin, setIsLogin }) => {
-
-    const [registerList, setRegisterList] = useState([]);
-
-    /*    useEffect(() => {
-           const loadRegister = async () => {
-               try {
-                   const { data } = await api.get("/profile");
-                   setRegisterList(data);
-               } catch (error) {
-                   console.log(error);
-               }
-           };
-           loadRegister();
-       }); */
+export const RoutesMain = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<LoginPage isLogin={isLogin} setIsLogin={setIsLogin} />} />
-            <Route path="/Register" element={<RegisterPage registerList={registerList} setRegisterList={setRegisterList} />} />
-            <Route path="/HomePage" element={<HomePage registerList={registerList} setRegisterList={setRegisterList} />} />
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/Register" element={<RegisterPage />} />
+            <Route path="/HomePage" element={<HomePage />} />
         </Routes>
 
     );

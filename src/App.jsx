@@ -1,19 +1,16 @@
 
-
-import { useState } from "react";
 import { RoutesMain } from "./routes/RoutesMain.index";
-import GlobalStyles from "./styles/globalstyles";
-
+import GlobalStyles from "./styles/GlobalStyles";
+import { UserProvider } from "./provider/UserContext";
 
 
 export const App = () => {
-
-  const [isLogin, setIsLogin] = useState(false);
-
   return (
     <div className="App">
-      <GlobalStyles/>
-      <RoutesMain isLogin={isLogin} setIsLogin={setIsLogin} />
+      <GlobalStyles />
+      <UserProvider>
+        <RoutesMain />
+      </UserProvider>
     </div>
   );
 }

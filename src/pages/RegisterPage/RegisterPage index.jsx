@@ -1,35 +1,33 @@
-import { Link } from "react-router-dom";
 
 import Logo from "../../assets/Logo.png";
 
-import { Headline, Headline1 } from "../../styles/typography";
-import { AddRegisterForm } from "../../components/AddRegisterForm/RegisterForm index";
-import { NavbarRegister, NavButtonRegister, TextContainer } from "./styles";
 import { NavLink } from "react-router-dom";
+import { AddRegisterForm } from "../../components/AddRegisterForm/RegisterForm index";
+import { Headline1 } from "../../styles/typography";
+import { NavbarRegister, NavButtonRegister, TextContainer, LoginRegContainer } from "./styles";
 import { Phrase } from "../LoginPage/styles";
 
 
-
-export const RegisterPage = ({ registerList, setRegisterList }) => {
+export const RegisterPage = () => {
 
     return (
         <>
             <NavbarRegister>
                 <img src={Logo} alt="" />
                 <NavButtonRegister>
-                    <NavLink to="/"> <li>Loggout</li> </NavLink>
+                    <NavLink to="/"> <li> Home </li> </NavLink>
                 </NavButtonRegister>
             </NavbarRegister>
             <TextContainer>
-                <Headline1>
-                    RegisterPage
-                </Headline1>
-                <Phrase>
-                    Fast and free, here we go!
-                </Phrase>
-                <div>
-                    <AddRegisterForm setRegisterList={setRegisterList} />
-                </div>
+                <LoginRegContainer>
+                    <Headline1>
+                        RegisterPage
+                    </Headline1>
+                    <Phrase>
+                        Fast and free, here we go!
+                    </Phrase>
+                    <AddRegisterForm />
+                </LoginRegContainer>
             </TextContainer>
         </>
     );

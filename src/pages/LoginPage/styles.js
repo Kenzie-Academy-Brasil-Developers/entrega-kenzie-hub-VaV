@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const LoginPageDiv = styled.div`
+export const LoginPageForm = styled.form`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  
 `;
 
 export const ImageContainer = styled.div`
@@ -22,16 +23,18 @@ export const ImageContainer = styled.div`
 
 export const LoginContainer = styled.div`
   width: 18.75rem;
-  height: 26.875rem;
+  height: 29rem;
+  
+
   background-color: var(--color-grey-3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 
   color: var(--color-grey-0);
 
-  border: 2px solid white;
   @media (min-width: 48rem) {
     width: 23.4375rem;
     height: 33.75rem;

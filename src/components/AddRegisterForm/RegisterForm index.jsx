@@ -5,29 +5,19 @@ import { Input } from "../Inputs/input index";
 import { formBlueprint } from "./FormBlueprint";
 import { api } from "../../services/api";
 
-import { ButtonLogin} from "../../styles/typography";
-import { LoginContainer, Select} from "./styles";
-import { useNavigate } from "react-router-dom";
+import { ButtonLogin, Headline2 } from "../../styles/typography";
+import { LoginContainer, Select } from "./styles";
+import { useContext } from "react";
+import { UserContext } from "../../provider/UserContext";
 
 
-export const AddRegisterForm = ({ setRegisterList }) => {
+export const AddRegisterForm = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: zodResolver(formBlueprint)
     });
 
-    const navigate = useNavigate();
-
-    const createUser = async (formData) => {
-        try {
-            const { data } = await api.post("/users", formData);
-            setRegisterList((registerlist) => [...registerlist, data]);
-            navigate("/HomePage")
-            localStorage.geItem("Token", data)
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const {user, setUser, userLoggedin, registerList, setRegisterList, createUser} = useContext(UserContext)
 
     const submit = (formData) => {
         createUser(formData);
@@ -37,31 +27,36 @@ export const AddRegisterForm = ({ setRegisterList }) => {
 
     return (
 
-        <LoginContainer onSubmit={handleSubmit(submit)} noValidate>
-            <Input required label="name:" type="text" {...register("name")} />
-            
+        <LoginContainer onSubmit={handleSubmit(submit)}>
+            <Input required label="Name:" type="text" {...register("name")} />
+            {errors.name ? <p>{errors.name.message}</p> : null}
 
-            <Input required label="email:" type="text" {...register("email")} />
-            
+            <Input required label="E-mail:" type="email" {...register("email")} />
+            {errors.email ? <p>{errors.email.message}</p> : null}
 
-            <Input required label="password:" type="password" {...register("password")} />
-         
+            <Input required label="Password:" type="password" {...register("password")} />
+            {errors.password ? <p>{errors.password.message}</p> : null}
 
-            <Input required label="confirm password:" type="password" {...register("confirmpassword")} />
-            
+            <Input required label="Confirm Password:" type="password" {...register("confirmpassword")} />
+            {errors.confirmpassword ? <p>{errors.confirmpassword.message}</p> : null}
 
-            <Input label="bio:" type="text" {...register("bio")} />
-           
+            <Input label="Bio:" type="text" {...register("bio")} />
+            {errors.bio ? <p>{errors.bio.message}</p> : null}
 
-            <Input required label="contact:" type="text" {...register("contact")} />
-           
-            <Select name="Module" id="Course-Module" label="course_module:" {...register("course_module")}>
-                <option value=""> Please choose an option</option>
-                <option value="M1">Primeiro módulo (Introdução ao Frontend)</option>
-                <option value="M2">Segundo módulo (Frontend Avançado)</option>
-                <option value="M3">Terceiro módulo (Introdução ao Backend)</option>
-                <option value="M4">Quarto módulo (Backend Avançado)</option>
-            </Select>
+            <Input required label="Contact:" type="text" {...register("contact")} />
+            {errors.contact ? <p>{errors.contact.message}</p> : null}
+            <div>
+                <Headline2>Course Module</Headline2>
+                <Select name="course_module" id="course_module" label="Course Module:" {...register("course_module")}>
+                    <option value=""> Please choose an option</option>
+                    <option value="M1">Primeiro módulo (Introdução ao Frontend)</option>
+                    <option value="M2">Segundo módulo (Frontend Avançado)</option>
+                    <option value="M3">Terceiro módulo (Introdução ao Backend)</option>
+                    <option value="M4">Quarto módulo (Backend Avançado)</option>
+                </Select>
+                {errors.course_module ? <p>{errors.Module.message}</p> : null}
+            </div>
+
             <button type="submit" className={ButtonLogin}> Sign-in</button>
         </LoginContainer >
 

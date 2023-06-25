@@ -42,3 +42,21 @@ export const TextContainer = styled.div`
   justify-content: center;
   color: var(--color-grey-0);
 `;
+
+export const LoginRegContainer = styled.div`
+  width: 18.75rem;
+  height: 50rem;
+  background-color: var(--color-grey-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-grey-0);
+
+ 
+  @media (min-width: 48rem) {
+    width: 23.4375rem;
+    height: 50rem;
+  }
+`;

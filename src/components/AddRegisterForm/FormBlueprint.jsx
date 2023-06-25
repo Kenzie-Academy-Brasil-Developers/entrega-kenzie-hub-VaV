@@ -14,17 +14,7 @@ export const formBlueprint = z.object({
         course_module: z.string().min(1, "Choose one Module")
 }).refine(({password, confirmpassword}) => confirmpassword === password, {
     message: "Both passwords must be identical",
-    path: ["confirm"],
+    path: ["confirmpassword"],
 });
 
 
-/* 
-"id": "c110dbb6-beb9-4682-ab63-2c12a570d66b",
-  "name": "John Doe",
-  "email": "johndoe@email.com",
-  "Password",
-  "bio": "Lorem ipsum dolor emet",
-  "contact": "linkedin/in/johndoe",
-  "course_module": "Segundo Módulo (Frontend avançado)",
-  
-*/

@@ -1,13 +1,17 @@
-import { RegisterCard } from "../RegisterCard/RegisterCard index";
+
+import { useContext } from "react";
+import { UserContext } from "../../../provider/UserContext";
 
 
-export const RegisterList = ({ registerList, setRegisterList }) => {
-
+export const RegisterList = () => {
+    const {user} = useContext(UserContext)
+  
     return (
-        <ul>
-            {registerList.map(register => (
-                <RegisterCard key={register.id} register={register} setRegisterList={setRegisterList} />
-            ))}
-        </ul>
+        <div>
+            
+            <h1>
+             {user.name} - {user.course_module}
+            </h1>   
+        </div>
     );
 };

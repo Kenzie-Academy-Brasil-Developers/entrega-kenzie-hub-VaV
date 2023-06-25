@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { FieldSet,} from "./styles";
+import { FieldSet, } from "./styles";
 
 
 export const Input = forwardRef(({ label, type, id, error, ...rest }, ref) => {
@@ -7,7 +7,7 @@ export const Input = forwardRef(({ label, type, id, error, ...rest }, ref) => {
 
         <FieldSet>
             {label ? <label> {label}</label> : null}
-            <input type={type} id={id} ref={ref} {...rest} />
+            <input type={type} id={id} {...rest} ref={ref} />
             {error ? (<p>{error.message}</p>) : null}
         </FieldSet>
 
