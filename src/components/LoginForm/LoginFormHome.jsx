@@ -6,22 +6,27 @@ import { LoginPageForm, ImageContainer, LoginContainer, Phrase, SigninButton } f
 import { InfoLogin } from "../../pages/LoginPage/styles";
 import { Headline1 } from "../../styles/typography";
 import { Link } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginForm } from "./LoginForm";
 
 import Logo from "../../assets/Logo.png";
 
 export const LoginFormHome = () => {
-    const { register, handleSubmit } = useForm();
 
-    const { userLoggedin } = useContext(UserContext);
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(LoginForm)
+    });
+
+    const { userLoggedIn } = useContext(UserContext);
 
     const submit = (formData) => {
-        userLoggedin(formData);
+        userLoggedIn(formData);
     };
 
     return (
         <LoginPageForm onSubmit={handleSubmit(submit)}>
             <ImageContainer>
-                <img src={Logo} alt="" />
+                <img src={Logo} alt="Knezie-Hub" />
             </ImageContainer>
             <LoginContainer>
                 <InfoLogin>

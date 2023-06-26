@@ -59,7 +59,7 @@ export const Main = styled.main`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-around; 
 
   color: var(--color-grey-0);
 `;

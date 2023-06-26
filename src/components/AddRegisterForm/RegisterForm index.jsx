@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "../Inputs/input index";
 import { formBlueprint } from "./FormBlueprint";
-import { api } from "../../services/api";
 
 import { ButtonLogin, Headline2 } from "../../styles/typography";
 import { LoginContainer, Select } from "./styles";
@@ -17,7 +16,7 @@ export const AddRegisterForm = () => {
         resolver: zodResolver(formBlueprint)
     });
 
-    const {user, setUser, userLoggedin, registerList, setRegisterList, createUser} = useContext(UserContext)
+    const { createUser } = useContext(UserContext);
 
     const submit = (formData) => {
         createUser(formData);

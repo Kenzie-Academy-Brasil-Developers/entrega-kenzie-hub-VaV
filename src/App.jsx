@@ -1,16 +1,18 @@
 
+import { useContext } from "react";
 import { RoutesMain } from "./routes/RoutesMain.index";
 import GlobalStyles from "./styles/GlobalStyles";
-import { UserProvider } from "./provider/UserContext";
+import { UserContext } from "./provider/UserContext";
 
 
 export const App = () => {
+
+  const { loading } = useContext(UserContext);
+
   return (
     <div className="App">
       <GlobalStyles />
-      <UserProvider>
-        <RoutesMain />
-      </UserProvider>
+      {loading ? <p>Loading...</p> : <RoutesMain />}
     </div>
   );
 }

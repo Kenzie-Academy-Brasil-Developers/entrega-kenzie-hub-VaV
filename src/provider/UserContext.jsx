@@ -1,8 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginForm } from "../components/LoginForm/LoginForm";
+
 import { api } from "../services/api";
 
 
@@ -11,42 +9,43 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({ resolver: zodResolver(LoginForm) });
+    const currentPath = window.location.pathname;
+
 
     useEffect(() => {
-        const loadedUser = async () => {
-            const token = localStorage.getItem("@TOKEN");
-            const userId = localStorage.getItem("@UDERID");
+        const token = localStorage.getItem("@TOKEN");
+        const id = localStorage.getItem("@USERID");
 
-            if (token && userId) {
-                try {
-                    const { data } = await api.get(`/profile/${token}`);
-                    setUser(data);
-                } catch (error) {
-                    console.log(error);
-                    localStorage.removeItem("@TOKEN");
-                    localStorage.removeItem("@USERID");
-                }
+
+        const loadUser = async () => {
+
+            try {
+                setLoading(true);
+                const { data } = await api.get(`/profile/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setUser(data);
+                navigate(currentPath);
+            } catch (error) {
+                console.log(error);
+                localStorage.removeItem("@TOKEN");
+                localStorage.removeItem("@USERID");
+
+            } finally {
+                setLoading(false);
+            }
+            if (token && id) {
+                loadUser();
             }
         };
-        loadedUser();
     }, []);
 
-    const userLoggedin = async (formData) => {
-        try {
-            const { data } = await api.post("/sessions", formData);
-            localStorage.setItem("@TOKEN", data.token);
-            localStorage.setItem("@USERID", data.user.id);
-            setUser(data.user);
-            navigate("/HomePage");
-
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     const createUser = async (formData) => {
         try {
@@ -59,14 +58,29 @@ export const UserProvider = ({ children }) => {
         console.log(formData);
     };
 
+    const userLoggedIn = async (formData) => {
+        try {
+            const { data } = await api.post("/sessions", formData);
+            localStorage.setItem("@TOKEN", data.token);
+            localStorage.setItem("@USERID", data.user.id);
+            setUser(data.user);
+            navigate("/HomePage");
+            console.log(data)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const handleUserLogout = () => {
         localStorage.removeItem("@TOKEN");
         localStorage.removeItem("@USERID");
+        setUser(null);
+        navigate("/");
 
     };
 
     return (
-        <UserContext.Provider value={{ user, setUser, userLoggedin, register, handleSubmit, reset, errors, createUser, handleUserLogout }}>
+        <UserContext.Provider value={{ user, createUser, userLoggedIn, handleUserLogout, loading }}>
             {children}
         </UserContext.Provider>
     );

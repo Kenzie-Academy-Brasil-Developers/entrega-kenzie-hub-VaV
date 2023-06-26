@@ -2,18 +2,23 @@ import { Route, Routes } from "react-router-dom";
 import { HomePage } from "../pages/HomePage/HomePage index";
 import { LoginPage } from "../pages/LoginPage/LoginPage index";
 import { RegisterPage } from "../pages/RegisterPage/RegisterPage index";
-import { useEffect, useState } from "react";
-import { api } from "../services/api";
+import { ProtectedRoutes } from "../components/ProtectedRoutes/ProtectedRoutes";
+import { PublicRoutes } from "../components/PublicRoutes/PublicRoutes";
+import { TechProvider } from "../provider/TechContext";
+
 
 export const RoutesMain = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/Register" element={<RegisterPage />} />
-            <Route path="/HomePage" element={<HomePage />} />
+            <Route element={<PublicRoutes />}>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/Register" element={<RegisterPage />} />
+            </Route>
+            <Route element={<ProtectedRoutes />}>
+                <Route path="/HomePage" element={<TechProvider><HomePage /></TechProvider>} />
+            </Route>
         </Routes>
-
     );
 }
 
