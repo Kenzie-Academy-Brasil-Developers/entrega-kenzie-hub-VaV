@@ -11,6 +11,10 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    const userUpdate = (data) => {
+        setUser(data);
+    };
+
     const navigate = useNavigate();
 
     const currentPath = window.location.pathname;
@@ -65,7 +69,7 @@ export const UserProvider = ({ children }) => {
             localStorage.setItem("@USERID", data.user.id);
             setUser(data.user);
             navigate("/HomePage");
-            console.log(data)
+            console.log(data);
         } catch (error) {
             console.log(error);
         }
@@ -80,7 +84,7 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, createUser, userLoggedIn, handleUserLogout, loading }}>
+        <UserContext.Provider value={{ user, createUser, userLoggedIn, handleUserLogout, loading, userUpdate, setLoading }}>
             {children}
         </UserContext.Provider>
     );

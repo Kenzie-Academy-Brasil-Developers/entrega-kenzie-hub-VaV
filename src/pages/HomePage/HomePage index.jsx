@@ -8,6 +8,7 @@ import { NavButton } from "./styles";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../provider/UserContext";
 import { TechProvider } from "../../provider/TechContext";
+import { UserTechnologyList } from "../../components/UserTechnologies/UserTechnologiesList";
 
 export const HomePage = () => {
 
@@ -29,6 +30,7 @@ export const HomePage = () => {
                     <RegisterList />
                 </Header>
                 <Main>
+                    <UserTechnologyList/>
                     <Headline1>  What a shame, we are still under development D:</Headline1>
                     <Headline> our application is under developemnt, but soon we'll have some news :3</Headline>
                 </Main>
